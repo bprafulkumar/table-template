@@ -1,0 +1,13 @@
+table {
+    overflow:hidden;
+    th, td {
+      text-align:left;
+      vertical-align:top;
+    }
+    tr {
+      transition:all 1s ease-in-out;
+      &.slide-out {
+        transform:rotateX(90deg);
+      }
+    }
+  }
