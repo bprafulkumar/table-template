@@ -1,12 +1,4 @@
 
-let rules = {
-    method: "GET",
-    mode : "no-cors",
-    headers : {
-        "Content-Type" : "application/json"
-    }
-}
-
 // fetch('http://localhost:3000/UsersData',rules).then((res) => {
 //     console.log(res.json())
 // })
@@ -64,17 +56,17 @@ $(document).ready(() => {
 
                 <td class="td-data"><div class="data-part">${value.eurekaMoments}</div></td>
 
-
+                
                 <td class="td-data"><div class="data-part">${value.contributionOfTeam}</div></td>
-
+                
                 <td class="td-data"><div class="data-part">${value.challenges}</div></td>
-
+                
                 <td class="td-data"><div class="data-part">${value.ProblemWithTeam}</div></td>
             
                 <td class="td-data"><div class="data-part">${value.ProblemWithTeam1 ? value.ProblemWithTeam1 : "" }</div></td>
-
-            </tr>
-           
+                
+                </tr>
+                
             </tbody>`
 
             table.innerHTML += tableItem
@@ -83,20 +75,40 @@ $(document).ready(() => {
 })
  
         const rows = Array.from(document.querySelectorAll('tr'));
-        // const rowspart = document.querySelectorAll('.table-row')
-
-        // console.log(rowspart,"ssshs")
-        
         function slideOut(row) {
           row.classList.add('slide-out');
         }
         
         function slideIn(row, index) {
-          setTimeout(function() {
-            row.classList.remove('slide-out');
+            setTimeout(function() {
+                row.classList.remove('slide-out');
           }, (index + 5) * 200);  
         }
         
         rows.forEach(slideOut)
         
         rows.forEach(slideIn);
+        
+        
+        let rules = {
+    url:'http://localhost:3000/userdata',
+    method: "get",
+    // mode : "no-cors",
+    // headers : {
+    //     "Content-Type" : "application/json",
+    //     "Access-Control-Allow-Origin" : "*", 
+    //     "Access-Control-Allow-Credentials" : true 
+    // },
+
+    // body: JSON.stringify()
+}
+
+                // fetch('http://localhost:3000/userdata',rules).then((data) => {
+                //         return data.json()
+                // }).then((data) => console.log(data))
+        
+        async function fetchdata() {
+            const data = await axios.get('http://localhost:3000/userdata')
+            console.log(data,"response")
+        }
+        fetchdata()
